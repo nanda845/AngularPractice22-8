@@ -10,6 +10,10 @@ import { SliderComponent } from './slider/slider.component';
 import { GridListComponent } from './grid-list/grid-list.component';
 import { TableRowExpandComponent } from './table-row-expand/table-row-expand.component';
 import { LoaderComponent } from './loader/loader.component';
+import { DataFromExternalFileComponent } from './data-from-external-file/data-from-external-file.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DynamicDivGridsComponent } from './dynamic-div-grids/dynamic-div-grids.component';
+import { CustomDirective } from './custom.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,10 @@ import { LoaderComponent } from './loader/loader.component';
     SliderComponent,
     GridListComponent,
     TableRowExpandComponent,
-    LoaderComponent
+    LoaderComponent,
+    DataFromExternalFileComponent,
+    DynamicDivGridsComponent,
+    CustomDirective
   ],
   imports: [
     BrowserModule,
@@ -31,7 +38,8 @@ import { LoaderComponent } from './loader/loader.component';
     MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
