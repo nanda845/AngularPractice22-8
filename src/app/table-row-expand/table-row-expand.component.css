@@ -19,3 +19,9 @@
   .element-row.expanded {
     border-bottom-color: transparent;
   }
+
+  
+.matlabelcustom {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+}

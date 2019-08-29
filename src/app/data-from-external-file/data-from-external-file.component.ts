@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataFromExternalFileComponent implements OnInit {
   val:any=[];
+  search='';
+  serachAge:number=0;
   constructor(private http:HttpClient) {
     
   }

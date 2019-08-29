@@ -14,6 +14,7 @@ import { DataFromExternalFileComponent } from './data-from-external-file/data-fr
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicDivGridsComponent } from './dynamic-div-grids/dynamic-div-grids.component';
 import { CustomDirective } from './custom.directive';
+import { CustomFilterPipe } from './custom-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CustomDirective } from './custom.directive';
     LoaderComponent,
     DataFromExternalFileComponent,
     DynamicDivGridsComponent,
-    CustomDirective
+    CustomDirective,
+    CustomFilterPipe
   ],
   imports: [
     BrowserModule,

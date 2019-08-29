@@ -1,36 +1,5 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-table-row-expand',
-//   templateUrl: './table-row-expand.component.html',
-//   styleUrls: ['./table-row-expand.component.css']
-// })
-// export class TableRowExpandComponent implements OnInit {
-//   displayedColumns = ['expandRow', 'name', 'age'];
-//   data = [
-//     { name: 'ANK', age: 26, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
-//     { name: 'SN', age: 28, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
-//     { name: 'SNS', age: 27, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
-//     { name: 'ANK', age: 26, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
-//     { name: 'SN', age: 28, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
-//     { name: 'SNS', age: 27, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
-//     { name: 'ANK', age: 26, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
-//     { name: 'SN', age: 28, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
-//     { name: 'SNS', age: 27, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] }
-//   ]
-//   expandedElement: any;
-//   isExpandable=(i:number,row:object)=>row['score'].length>0;
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-import { Component } from '@angular/core';
-import { DataSource } from '@angular/cdk/collections';
-import { Observable, of } from 'rxjs';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-table-row-expand',
@@ -44,63 +13,34 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     ]),
   ],
 })
-export class TableRowExpandComponent {
-  displayedColumns = ['position', 'name', 'weight'];
-  dataSource = new ExampleDataSource();
-
-  isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
+export class TableRowExpandComponent implements OnInit {
+  displayedColumns = ['expandRow', 'name', 'age'];
+  data = [
+    { name: 'ANK', age: 26, score: [{ subject: 'A', marks: 70 }, { subject: 'B', marks: 70 }, { subject: 'C', marks: 70 }] },
+    { name: 'SN', age: 28, score: [{ subject: 'D', marks: 70 }, { subject: 'E', marks: 70 }, { subject: 'F', marks: 70 }] },
+    { name: 'SNS', age: 27, score: [{ subject: '', marks: 70 }, { subject: '', marks: 70 }, { subject: '', marks: 70 }] },
+    { name: 'ANK', age: 26, score: [{ subject: 'G', marks: 70 }, { subject: 'H', marks: 70 }, { subject: 'I', marks: 70 }] },
+    { name: 'SN', age: 28, score: [{ subject: 'J', marks: 70 }, { subject: 'K', marks: 70 }, { subject: 'L', marks: 70 }] },
+    { name: 'SNS', age: 27, score: [{ subject: 'M', marks: 70 }, { subject: 'N', marks: 70 }, { subject: 'O', marks: 70 }] },
+    { name: 'ANK', age: 26, score: [{ subject: 'P', marks: 70 }, { subject: 'Q', marks: 70 }, { subject: 'R', marks: 70 }] },
+    { name: 'SN', age: 28, score: [{ subject: 'S', marks: 70 }, { subject: 'T', marks: 70 }, { subject: 'U', marks: 70 }] },
+    { name: 'SNS', age: 27, score: [{ subject: 'V', marks: 70 }, { subject: 'W', marks: 70 }, { subject: 'X', marks: 70 }] }
+  ]
   expandedElement: any;
-}
+  // isExpandable=(i:number,row:object)=>row['score'].length>0;
+  isExpansionDetailRow = (i: number, row: Object) => true;
+  constructor() { }
 
-export interface Element {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const data: Element[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
-];
-
-/**
- * Data source to provide what data should be rendered in the table. The observable provided
- * in connect should emit exactly the data that should be rendered by the table. If the data is
- * altered, the observable should emit that new set of data on the stream. In our case here,
- * we return a stream that contains only one set of data that doesn't change.
- */
-export class ExampleDataSource extends DataSource<any> {
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<Element[]> {
-    const rows = [];
-    data.forEach(element => rows.push(element, { detailRow: true, element }));
-    console.log(rows);
-    return of(rows);
+  ngOnInit() {
   }
 
-  disconnect() { }
+  
+  expandProduct(element) {
+    this.expandedElement = element;
+  }
+
+  collapseProduct() {
+    this.expandedElement = '';
+  }
+
 }
-
-
-/**  Copyright 2017 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */
